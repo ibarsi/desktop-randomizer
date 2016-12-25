@@ -9,7 +9,15 @@ pick a random one, save/update locally and set as my current desktop background.
 3. Install `virtualenv` and activate it in this project's root by running `virtualenv desktop-randomize/bin/activate`.
 4. Run `./main.py` to update Desktop image.
 
-Optionally, this script could be configured to run automatically (ie. crontab) to keep your desktop _extra_ fresh.
+#### OPTIONAL ####
+This script could be configured to run automatically to keep your desktop _extra_ fresh.
+
+OS X (Launchd):
+1. Remove the ".ex" at the end of `com.user-name.desktop-randomizer.plist.ex` and replace all instances of {{user-name}} with whatever
+you'd like (including in the file name).
+2. Move file to `/Library/LaunchDaemons`.
+3. Update the `<key>StartCalendarInterval</key>` node to set when you'd like to have the script run (currently its set to daily at
+midnight).
 
 ### NOTES ###
 Currently, Unsplash's "new" page is used to scrape random images. This can be changed to point to another site, but then all image
