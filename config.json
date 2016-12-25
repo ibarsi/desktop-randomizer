@@ -1,0 +1,7 @@
+{
+    "image_filename": "RandomizedBackground.jpg",
+    "image_url": "https://unsplash.com/new",
+    "image_xpath_format": "//*[@id=\"gridSingle\"]/div/a/@style",
+    "image_start_value": "background-image:url(",
+    "image_end_value": "?"
+}
