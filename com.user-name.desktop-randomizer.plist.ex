@@ -3,12 +3,18 @@
  <plist version="1.0">
  <dict>
      <key>Desktop Randomizer</key>
-     <string>com.user-name.desktop-randomizer</string>
+     <string>com.{{user-name}}.desktop-randomizer</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+         <key>PATH</key><string>/Users/{{user-name}}/Projects/desktop-randomizer/desktop-randomizer/lib/python2.7/site-packages</string>
+         <key>PYTHONPATH</key><string>/Users/{{user-name}}/Projects/desktop-randomizer/desktop-randomizer/lib/python2.7/site-packages</string>
+     </dict>
 
      <key>ProgramArguments</key>
      <array>
          <string>/bin/bash</string>
-         <string>./Users/user-name/Projects/desktop-randomizer/main.py</string>
+         <string>./Users/{{user-name}}/Projects/desktop-randomizer/main.py</string>
      </array>
 
      <key>KeepAlive</key>
@@ -26,9 +32,9 @@
      </dict>
 
      <key>StandardErrorPath</key>
-     <string>/tmp/com.user-name.desktop-randomizer.err</string>
+     <string>/tmp/com.{{user-name}}.desktop-randomizer.err</string>
 
      <key>StandardOutPath</key>
-     <string>/tmp/com.user-name.desktop-randomizer.out</string>
+     <string>/tmp/com.{{user-name}}.desktop-randomizer.out</string>
  </dict>
  </plist>
