@@ -1,0 +1,5 @@
+IMAGE_FILENAME = 'RandomizedBackground.jpg'
+IMAGE_URL = 'https://unsplash.com/new'
+IMAGE_XPATH_FORMAT = '//*[@id=\"gridSingle\"]/div/a/@style'
+IMAGE_START_VALUE = 'background-image:url('
+IMAGE_END_VALUE = '?'

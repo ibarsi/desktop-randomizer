@@ -1,17 +1,16 @@
 #!/usr/bin/env python
 
 import os
-import json
 import urllib
 from subprocess import call
 
-import scrape
+from settings import IMAGE_FILENAME
+from scrape import get_random_image
 
-with open('config.json') as config_file:
-    config = json.load(config_file)
+image_file_path = os.path.join('/Library/Desktop Pictures/', IMAGE_FILENAME)
 
-image_file_path = os.path.join('/Library/Desktop Pictures/', config['image_filename'])
+print get_random_image()
 
-# Update desktop image & restart Dock
-urllib.urlretrieve(scrape.get_random_image(), image_file_path)
-call(['killall', 'Dock'])
+# # Update desktop image & restart Dock
+# urllib.urlretrieve(get_random_image(), image_file_path)
+# call(['killall', 'Dock'])

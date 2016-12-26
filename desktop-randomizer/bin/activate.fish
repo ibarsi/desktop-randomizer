@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/ibarsi/Projects/PRACTICE/desktop_randomizer/desktop_randomizer"
+set -gx VIRTUAL_ENV "/Users/ibarsi/Projects/desktop-randomizer/desktop-randomizer"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

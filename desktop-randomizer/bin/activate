@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/ibarsi/Projects/PRACTICE/desktop_randomizer/desktop_randomizer"
+VIRTUAL_ENV="/Users/ibarsi/Projects/desktop-randomizer/desktop-randomizer"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

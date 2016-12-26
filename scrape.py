@@ -1,17 +1,15 @@
-import json
 from random import sample
 
 from lxml import html
 import requests
 
+from settings import IMAGE_URL, IMAGE_XPATH_FORMAT, IMAGE_START_VALUE, IMAGE_END_VALUE
+
 
 def get_random_image():
-    with open('config.json') as config_file:
-        config = json.load(config_file)
+    elements = extract_image_elements_from_url(IMAGE_URL, IMAGE_XPATH_FORMAT)
 
-    elements = extract_image_elements_from_url(config['image_url'], config['image_xpath_format'])
-
-    random_image = extract_image_from_string(sample(elements, 1)[0], config['image_start_value'], config['image_end_value'])
+    random_image = extract_image_from_string(sample(elements, 1)[0], IMAGE_START_VALUE, IMAGE_END_VALUE)
 
     return random_image
 
