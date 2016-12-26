@@ -15,8 +15,9 @@ This script could be configured to run automatically to keep your desktop _extra
 OS X (Launchd):
 
 1. Remove the ".ex" at the end of `com.user-name.desktop-randomizer.plist.ex` and replace all instances of {{user-name}} with whatever you'd like (including in the file name).
-2. Move file to `/Library/LaunchDaemons`.
-3. Update the `<key>StartCalendarInterval</key>` node to set when you'd like to have the script run (currently its set to daily at
+2. Move file to `/Library/LaunchAgents`.
+3. Ensure `<key>EnvironmentVariables</key>` and `<key>ProgramArguments</key>` paths are pointing to the correct folders on your machine.
+4. Update the `<key>StartCalendarInterval</key>` node to set when you'd like to have the script run (currently its set to daily at
 midnight).
 
 ### NOTES ###

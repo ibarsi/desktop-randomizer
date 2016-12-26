@@ -7,14 +7,14 @@
 
     <key>EnvironmentVariables</key>
     <dict>
-         <key>PATH</key><string>/Users/{{user-name}}/Projects/desktop-randomizer/desktop-randomizer/lib/python2.7/site-packages</string>
-         <key>PYTHONPATH</key><string>/Users/{{user-name}}/Projects/desktop-randomizer/desktop-randomizer/lib/python2.7/site-packages</string>
+         <key>PYTHONPATH</key>
+         <string>/Users/{{user-name}}/Projects/desktop-randomizer/desktop-randomizer/lib/python2.7/site-packages</string>
      </dict>
 
      <key>ProgramArguments</key>
      <array>
-         <string>/bin/bash</string>
-         <string>./Users/{{user-name}}/Projects/desktop-randomizer/main.py</string>
+         <string>/usr/local/bin/python2.7</string>
+         <string>/Users/{{user-name}}/Projects/desktop-randomizer/main.py</string>
      </array>
 
      <key>KeepAlive</key>
@@ -33,8 +33,5 @@
 
      <key>StandardErrorPath</key>
      <string>/tmp/com.{{user-name}}.desktop-randomizer.err</string>
-
-     <key>StandardOutPath</key>
-     <string>/tmp/com.{{user-name}}.desktop-randomizer.out</string>
  </dict>
  </plist>
