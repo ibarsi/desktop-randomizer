@@ -21,7 +21,7 @@
      <false/>
 
      <key>RunAtLoad</key>
-     <false/>
+     <true/>
 
      <key>StartCalendarInterval</key>
      <dict>
