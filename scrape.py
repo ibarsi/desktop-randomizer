@@ -10,6 +10,7 @@ def get_random_image():
     elements = extract_image_elements_from_url(IMAGE_URL, IMAGE_XPATH_FORMAT)
 
     if len(elements) == 0:
+        print "WARNING: No images could be pulled from source."
         return None
 
     random_image = extract_image_from_string(choice(elements), IMAGE_START_VALUE, IMAGE_END_VALUE)

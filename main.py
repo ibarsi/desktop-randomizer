@@ -15,3 +15,5 @@ image = get_random_image()
 if image is not None:
     urllib.urlretrieve(image, image_file_path)
     call('killall Dock', shell=True)
+else:
+    print "WARNING: No image was returned from scraper."
