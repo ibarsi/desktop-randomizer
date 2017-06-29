@@ -26,7 +26,7 @@ def extract_image_elements_from_url(url, xpath_format):
 
 
 def extract_image_from_string(value, start_value, end_value):
-    start_index = value.find(start_value) + len(start_value) + 1
+    start_index = value.find(start_value) + len(start_value)
     end_index = value.find(end_value, start_index)
 
     return value[start_index:end_index]
