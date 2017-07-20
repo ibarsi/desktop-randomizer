@@ -1,4 +1,5 @@
 from random import choice
+from time import sleep
 
 from lxml import html
 import requests
@@ -19,7 +20,23 @@ def get_random_image():
 
 
 def extract_image_elements_from_url(url, xpath_format):
-    page = requests.get(url)
+    retry_count = 0
+    page = None
+
+    while retry_count < 5 and page is None:
+        try:
+            page = requests.get(url)
+        except requests.exceptions.ConnectionError:
+            retry_count += 1
+            print "Connection failed, retrying..."
+            sleep(5)
+            print "Retry Count: " + str(retry_count)
+            continue
+
+    if page is None:
+        print "Request for image content failed. Aborting :("
+        raise Exception('Failed to request image content.')
+
     tree = html.fromstring(page.content)
 
     return tree.xpath(xpath_format)
