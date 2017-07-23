@@ -1,2 +1,5 @@
 lxml==3.7.1
+pep8==1.7.0
 requests==2.12.4
+selenium==3.4.3
+xvfbwrapper==0.2.9

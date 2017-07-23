@@ -2,7 +2,7 @@ from random import choice
 from time import sleep
 
 from lxml import html
-import requests
+from selenium import webdriver
 
 from settings import IMAGE_URL, IMAGE_XPATH_FORMAT, IMAGE_START_VALUE, IMAGE_END_VALUE
 
@@ -22,14 +22,23 @@ def get_random_image():
 def extract_image_elements_from_url(url, xpath_format):
     retry_count = 0
     page = None
+    driver = webdriver.PhantomJS()
 
     while retry_count < 5 and page is None:
         try:
-            page = requests.get(url)
-        except requests.exceptions.ConnectionError:
+            # Scroll down a few times to ensure infinite scroll loads at least a few photos
+            driver.get(url)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            sleep(0.5)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            sleep(0.5)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            sleep(0.5)
+            page = driver.page_source
+        except:
             retry_count += 1
             print "Connection failed, retrying..."
-            sleep(5)
+            sleep(1)
             print "Retry Count: " + str(retry_count)
             continue
 
@@ -37,9 +46,12 @@ def extract_image_elements_from_url(url, xpath_format):
         print "Request for image content failed. Aborting :("
         raise Exception('Failed to request image content.')
 
-    tree = html.fromstring(page.content)
+    tree = html.fromstring(page)
+    elements = tree.xpath(xpath_format)
 
-    return tree.xpath(xpath_format)
+    driver.quit()
+
+    return elements
 
 
 def extract_image_from_string(value, start_value, end_value):

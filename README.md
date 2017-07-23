@@ -5,12 +5,13 @@ pick a random one, save/update locally and set as my current desktop background.
 
 ### GETTING STARTED ###
 1. Ensure you have a Python environment setup on your machine.
-2. Run `pip install virtualenv`.
-3. Create your virtualenv by running `virtualenv desktop-randomizer` (this path has been added to `.gitignore`).
-4. Activate virtualenv by running `source desktop-randomizer/bin/activate`.
-5. Install frozen dependencies by running `pip install -r requirements.txt`.
-6. Create an image file in your "Desktop Images" folder called `RandomizedImage.jpg` (this name can be changed in `settings.py`).
-7. Run `./main.py` to update Desktop image.
+2. Install PhantomJS (ie. `brew install phantomjs`) and ensure it has been added to your PATH.
+3. Run `pip install virtualenv`.
+4. Create your virtualenv by running `virtualenv desktop-randomizer` (this path has been added to `.gitignore`).
+5. Activate virtualenv by running `source desktop-randomizer/bin/activate`.
+6. Install frozen dependencies by running `pip install -r requirements.txt`.
+7. Create an image file in your "Desktop Images" folder called `RandomizedImage.jpg` (this name can be changed in `settings.py`).
+8. Run `./main.py` to update Desktop image.
 
 #### OPTIONAL ####
 This script could be configured to run automatically to keep your desktop _extra_ fresh.
