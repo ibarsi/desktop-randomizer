@@ -4,7 +4,7 @@ from time import sleep
 from lxml import html
 from selenium import webdriver
 
-from settings import IMAGE_URL, IMAGE_XPATH_FORMAT, IMAGE_START_VALUE, IMAGE_END_VALUE
+from settings import IMAGE_URL, IMAGE_XPATH_FORMAT, IMAGE_START_VALUE, IMAGE_END_VALUE, GHOSTDRIVER_LOG_PATH
 
 
 def get_random_image():
@@ -22,23 +22,22 @@ def get_random_image():
 def extract_image_elements_from_url(url, xpath_format):
     retry_count = 0
     page = None
-    driver = webdriver.PhantomJS()
+    driver = webdriver.PhantomJS(service_log_path=GHOSTDRIVER_LOG_PATH)
 
     while retry_count < 5 and page is None:
         try:
             # Scroll down a few times to ensure infinite scroll loads at least a few photos
             driver.get(url)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            sleep(0.5)
+            sleep(1)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            sleep(0.5)
+            sleep(1)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            sleep(0.5)
+            sleep(2)
             page = driver.page_source
         except:
             retry_count += 1
             print "Connection failed, retrying..."
-            sleep(1)
             print "Retry Count: " + str(retry_count)
             continue
 
