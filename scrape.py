@@ -26,14 +26,7 @@ def extract_image_elements_from_url(url, xpath_format):
 
     while retry_count < 5 and page is None:
         try:
-            # Scroll down a few times to ensure infinite scroll loads at least a few photos
             driver.get(url)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            sleep(1)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            sleep(1)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            sleep(2)
             page = driver.page_source
         except:
             retry_count += 1
@@ -41,12 +34,21 @@ def extract_image_elements_from_url(url, xpath_format):
             print "Retry Count: " + str(retry_count)
             continue
 
-    if page is None:
-        print "Request for image content failed. Aborting :("
-        raise Exception('Failed to request image content.')
+    elements = []
 
-    tree = html.fromstring(page)
-    elements = tree.xpath(xpath_format)
+    while len(elements) == 0:
+        try:
+            # Scroll down to ensure infinite scroll loads at least a few photos
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            sleep(1)
+
+            page = driver.page_source
+
+            tree = html.fromstring(page)
+            elements = tree.xpath(xpath_format)
+        except:
+            print "Request for image content failed. Aborting :("
+            raise Exception('Failed to request image content.')
 
     driver.quit()
 
